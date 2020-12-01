@@ -112,11 +112,11 @@
                 "description": "Hide import instructions on the AutopilotManager homepage"
             }
         },
-        "homepagePublishingDomainInfo": {
+        "HomepageImportCommandUrls": {
             "type": "string",
-            "defaultValue": "domain.com",
+            "defaultValue": "ap.domain.com,apserver.domain.com",
             "metadata": {
-                "description": "Domain info for AutopilotManager homepage"
+                "description": "Urls for client and server to build command to display on homepage"
             }
         }
     },
@@ -235,8 +235,8 @@
                             "value": "[parameters('hideHomepageImportInstructions')]"
                         },
                         {
-                            "name": "AppConfig:AutopilotManagerConfig:HomepagePublishingDomainInfo",
-                            "value": "[parameters('homepagePublishingDomainInfo')]"
+                            "name": "AppConfig:AutopilotManagerConfig:HomepageImportCommandUrls",
+                            "value": "[parameters('HomepageImportCommandUrls')]"
                         }
                     ]
                 }

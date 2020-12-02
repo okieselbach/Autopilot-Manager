@@ -18,7 +18,7 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
 
 <br />
 
-> **Note:** after deployment the app service needs to be stopped and started (not using the restart button) in the Azure portal. Otherwise the ASP.NET Core Extension is not recognized and a depenency error will occur.
+> **Note:** after deployment the app service needs to be stopped and started again (not using the restart button) via the Azure portal. Otherwise the ASP.NET Core Extensions are not recognized and a depenency error will occur.
 
 <br />
 

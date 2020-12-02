@@ -16,6 +16,13 @@ The following prerequisites are necessary to get Autopilot-Manager to work:
 ## Deployment
 The app service can be deployed via the Azure Resource Manager (ARM) template by using the following link:
 
+<br />
+
+> Note: after deployment the app service needs to be stopped and started (not using the restart button) in the Azure portal. Otherwise the ASP.NET Core Extension is not recognized and a depenency error will occur.
+
+<br />
+
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fokieselbach%2FAutopilot-Manager%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
+

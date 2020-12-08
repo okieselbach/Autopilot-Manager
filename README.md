@@ -2,6 +2,8 @@
 
 Autopilot-Manager needs the [Autopilot-Manager-Client](https://github.com/okieselbach/Autopilot-Manager-Client) to receive the Autopilot device provisioning information import request and showing the user a processing screen similar to the Autopilot Pre-Provisioning scenario (former known as WhiteGlove). The app service handles all the processing to import the device provisioning information into the tenant. It uses the same logic like the Michael Niehaus Autopilot script [Get-WindowsAutoPilotInfo](https://www.powershellgallery.com/packages/Get-WindowsAutoPilotInfo). The process is described in a blog post from Michael here: [Importing a device hash directly into Intune](https://oofhours.com/2020/03/25/importing-a-device-hash-directly-into-intune/)
 
+Read more about the solution on my blog post here: [Introducing Autopilot Manager](https://oliverkieselbach.com/2020/12/08/autopilot-manager/)
+
 ## Prerequisites
 
 The following prerequisites are necessary to get Autopilot-Manager to work:

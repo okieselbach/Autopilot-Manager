@@ -251,7 +251,7 @@
                     "type": "Microsoft.Web/sites/siteextensions",
                     "location": "[resourceGroup().location]",
                     "properties": {
-                        "version": "5.0.0"
+                        "version": "5.0.1"
                     },
                     "dependsOn": [
                         "[variables('_appSerivceName')]"
@@ -263,7 +263,7 @@
                     "type": "Microsoft.Web/sites/siteextensions",
                     "location": "[resourceGroup().location]",
                     "properties": {
-                        "version": "5.0.0"
+                        "version": "5.0.1"
                     },
                     "dependsOn": [
                         "[variables('_appSerivceName')]"

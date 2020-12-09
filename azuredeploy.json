@@ -41,10 +41,6 @@
         "approvalMode": {
             "type": "bool",
             "defaultValue": false,
-            "allowedValues": [
-                false,
-                true
-            ],
             "metadata": {
                 "description": "Enable Approval Mode"
             }

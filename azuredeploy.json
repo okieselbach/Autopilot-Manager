@@ -60,7 +60,7 @@
             "type": "string",
             "defaultValue": "AutopilotManager",
             "metadata": {
-                "description": "Use following Autopilot Group Tag for every import (overwritten in Approval Mode)"
+                "description": "Use following Autopilot Group Tag for every import (the value is overwritten in Approval Mode)"
             }
         },
         "useApprovalModeGroupTags": {
@@ -109,14 +109,14 @@
             "type": "bool",
             "defaultValue": false,
             "metadata": {
-                "description": "Hide import instructions on the AutopilotManager homepage"
+                "description": "Hide import instructions (commands) on the AutopilotManager homepage"
             }
         },
         "HomepageImportCommandUrls": {
             "type": "string",
             "defaultValue": "ap.domain.com,apserver.domain.com",
             "metadata": {
-                "description": "Urls for client and server to build command to display on homepage"
+                "description": "Urls for client and server to build command to display on homepage. It may also be just the client url if the server url is compiled into the ap.exe."
             }
         }
     },

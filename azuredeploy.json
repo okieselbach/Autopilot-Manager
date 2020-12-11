@@ -175,6 +175,10 @@
                             "value": "[parameters('appRegistrationClientSecret')]"
                         },
                         {
+                            "name": "AppConfig:AutopilotManagerConfig:UseAutopilotProfileGroup",
+                            "value": "true"
+                        },
+                        {
                             "name": "AppConfig:AutopilotManagerConfig:AutopilotProfileGroup",
                             "value": "[parameters('autopilotProfileGroup')]"
                         },

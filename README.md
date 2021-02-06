@@ -30,3 +30,7 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
     <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
 
+## Changelog
+v1.2 (vNext)
+- improved model/manufacturer parsing
+- improved AAD group membership addition

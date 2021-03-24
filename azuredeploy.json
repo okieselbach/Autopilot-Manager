@@ -118,7 +118,7 @@
     },
     "variables": {
         "_repoUrl": "https://raw.githubusercontent.com/okieselbach/Autopilot-Manager",
-        "_artifactsLocation": "[concat(variables('_repoUrl'), '/master/dist/Artifacts.zip')]",
+        "_artifactsLocation": "[concat(variables('_repoUrl'), '/master/dist/Artifacts-vNext.zip')]",
         "_appServicePlan": "[concat('AutopilotManager-ServicePlan-', uniqueString(resourceGroup().id))]",
         "_appSerivceName": "[concat('AutopilotManager-', uniqueString(resourceGroup().id))]"
     },

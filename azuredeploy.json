@@ -151,10 +151,11 @@
                     "alwaysOn": true,
                     "use32BitWorkerProcess": false,
                     "ftpsState": "Disabled",
+                    "netFrameworkVersion": "v5.0",
                     "metadata": [
                         {
                             "name": "CURRENT_STACK",
-                            "value": "dotnetcore"
+                            "value": "dotnet"
                         }
                     ],
                     "appSettings": [
@@ -237,38 +238,16 @@
                         {
                             "name": "AppConfig:AutopilotManagerConfig:HomepageImportCommandUrls",
                             "value": "[parameters('HomepageImportCommandUrls')]"
+                        },
+                        {
+                            "name": "AppConfig:AutopilotManagerConfig:Timeout",
+                            "value": "120"
                         }
                     ]
                 }
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', variables('_appServicePlan'))]"
-            ],
-            "resources": [
-                {
-                    "apiVersion": "2015-08-01",
-                    "name": "[concat(variables('_appSerivceName'), '/', 'AspNetCoreRuntime.5.0.x64')]",
-                    "type": "Microsoft.Web/sites/siteextensions",
-                    "location": "[resourceGroup().location]",
-                    "properties": {
-                        "version": "5.0.4"
-                    },
-                    "dependsOn": [
-                        "[variables('_appSerivceName')]"
-                    ]
-                },
-                {
-                    "apiVersion": "2015-08-01",
-                    "name": "[concat(variables('_appSerivceName'), '/', 'Microsoft.AspNetCore.AzureAppServices.SiteExtension')]",
-                    "type": "Microsoft.Web/sites/siteextensions",
-                    "location": "[resourceGroup().location]",
-                    "properties": {
-                        "version": "5.0.4"
-                    },
-                    "dependsOn": [
-                        "[variables('_appSerivceName')]"
-                    ]
-                }
             ]
         }
     ]

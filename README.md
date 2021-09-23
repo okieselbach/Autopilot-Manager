@@ -22,15 +22,13 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
 
 <br />
 
-> **Note:** after deployment the app service needs to be stopped and started again (not using the restart button) via the Azure portal. Otherwise the ASP.NET Core Extensions are not recognized and a depenency error will occur.
-
-<br />
-
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fokieselbach%2FAutopilot-Manager%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
 
 ## Changelog
-v1.2 (vNext)
+v1.3
+- added timeout configuration option
+v1.2
 - improved model/manufacturer parsing
 - improved AAD group membership addition

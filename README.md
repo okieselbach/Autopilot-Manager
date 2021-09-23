@@ -29,6 +29,8 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
 ## Changelog
 v1.3
 - added timeout configuration option
+
+
 v1.2
 - improved model/manufacturer parsing
 - improved AAD group membership addition

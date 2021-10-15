@@ -27,8 +27,19 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
 </a>
 
 ## Changelog
+v1.4
+- added deletion support in Approval Mode for Intune devices due to this latest change: https://docs.microsoft.com/en-us/mem/autopilot/troubleshoot-device-enrollment
+  new client parameter -e can be used to invoke the delete request
+  AppConfig:AutopilotManagerConfig:AllowDeletionInApprovalMode must be set to true
+  Additional App registration permissions "DeviceManagementManagedDevices.ReadWrite.All" must be granted
+- Optionally you can display the Approval and History link now on the footer area of the main page
+  AppConfig:AutopilotManagerConfig:ShowHomepageApprovalLink set to true
+  AppConfig:AutopilotManagerConfig:ShowHomepageHistoryLink set to true
+
+
 v1.3
 - added timeout configuration option
+  AppConfig:AutopilotManagerConfig:Timeout must be set to integer in minute e.g. 120 minutes
 
 
 v1.2

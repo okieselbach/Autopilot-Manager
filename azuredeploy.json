@@ -1,254 +1,266 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "appRegistrationClientId": {
-            "type": "string",
-            "metadata": {
-                "description": "Client Id (GUID) of AAD app registration"
-            }
-        },
-        "appRegistrationClientSecret": {
-            "type": "string",
-            "metadata": {
-                "description": "Client Secret of AAD app registration"
-            }
-        },
-        "autopilotProfileGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "AAD group (Object ID) for Autopilot profile assignment (direct members)"
-            }
-        },
-        "authorizationSecurityGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "AAD group (Object ID) for general AutopilotManager access"
-            }
-        },
-        "viewerSecurityGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "AAD group (Object ID) for Viewer access (Import History)"
-            }
-        },
-        "approverSecurityGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "AAD group (Object ID) for Approver in Approval Mode"
-            }
-        },
-        "approvalMode": {
-            "type": "bool",
-            "defaultValue": false,
-            "metadata": {
-                "description": "Enable Approval Mode"
-            }
-        },
-        "useApprovalUserAsAssignedUser": {
-            "type": "bool",
-            "defaultValue": false,
-            "metadata": {
-                "description": "Use the approval user as assigned user on the Autopilot device"
-            }
-        },
-        "groupTag": {
-            "type": "string",
-            "defaultValue": "AutopilotManager",
-            "metadata": {
-                "description": "Use following Autopilot Group Tag for every import (the value is overwritten in Approval Mode)"
-            }
-        },
-        "useApprovalModeGroupTags": {
-            "type": "bool",
-            "defaultValue": false,
-            "metadata": {
-                "description": "Allow choice of Group Tags in Approval Mode"
-            }
-        },
-        "approvalModeGroupTags": {
-            "type": "string",
-            "defaultValue": "AutopilotManager,NONE=No Group Tag",
-            "metadata": {
-                "description": "Approval Mode Group Tag list (use entry 'NONE=No Group Tag' to provide empty choice). Use a comma separated string groupTag1,groupTag2,..."
-            }
-        },
-        "useManufacturersFilter": {
-            "type": "bool",
-            "defaultValue": false,
-            "metadata": {
-                "description": "Enable filter (whitelist) for allowed Manufacturers"
-            }
-        },
-        "useModelsFilter": {
-            "type": "bool",
-            "defaultValue": false,
-            "metadata": {
-                "description": "Enable filter (whitelist) for allowed Models"
-            }
-        },
-        "manufacturers": {
-            "type": "string",
-            "defaultValue": "Microsoft Corporation",
-            "metadata": {
-                "description": "Manufacturers whitelist, use a comma separated string manufacturer1,manufacturer2,..."
-            }
-        },
-        "models": {
-            "type": "string",
-            "defaultValue": "Virtual Machine",
-            "metadata": {
-                "description": "Models whitelist, use a comma separated string model1,model2,..."
-            }
-        },
-        "hideHomepageImportInstructions": {
-            "type": "bool",
-            "defaultValue": false,
-            "metadata": {
-                "description": "Hide import instructions (commands) on the AutopilotManager homepage"
-            }
-        },
-        "HomepageImportCommandUrls": {
-            "type": "string",
-            "defaultValue": "ap.domain.com,apserver.domain.com",
-            "metadata": {
-                "description": "Urls for client and server to build command to display on homepage. It may also be just the client url if the server url is compiled into the ap.exe."
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appRegistrationClientId": {
+      "type": "string",
+      "metadata": {
+        "description": "Client Id (GUID) of AAD app registration"
+      }
     },
-    "variables": {
-        "_repoUrl": "https://raw.githubusercontent.com/okieselbach/Autopilot-Manager",
-        "_artifactsLocation": "[concat(variables('_repoUrl'), '/master/dist/Artifacts.zip')]",
-        "_appServicePlan": "[concat('AutopilotManager-ServicePlan-', uniqueString(resourceGroup().id))]",
-        "_appSerivceName": "[concat('AutopilotManager-', uniqueString(resourceGroup().id))]"
+    "appRegistrationClientSecret": {
+      "type": "string",
+      "metadata": {
+        "description": "Client Secret of AAD app registration"
+      }
     },
-    "resources": [
-        {
-            "apiVersion": "2020-06-01",
-            "type": "Microsoft.Web/serverfarms",
-            "name": "[variables('_appServicePlan')]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "Tier": "Standard",
-                "Name": "S1"
-            },
-            "properties": {
-                "name": "[variables('_appServicePlan')]",
-                "workerSize": 1,
-                "numberOfWorkers": 1
+    "autopilotProfileGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "AAD group (Object ID) for Autopilot profile assignment (direct members)"
+      }
+    },
+    "authorizationSecurityGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "AAD group (Object ID) for general AutopilotManager access"
+      }
+    },
+    "viewerSecurityGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "AAD group (Object ID) for Viewer access (Import History)"
+      }
+    },
+    "approverSecurityGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "AAD group (Object ID) for Approver in Approval Mode"
+      }
+    },
+    "approvalMode": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Enable Approval Mode"
+      }
+    },
+    "useApprovalUserAsAssignedUser": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Use the approval user as assigned user on the Autopilot device"
+      }
+    },
+    "groupTag": {
+      "type": "string",
+      "defaultValue": "AutopilotManager",
+      "metadata": {
+        "description": "Use following Autopilot Group Tag for every import (the value is overwritten in Approval Mode)"
+      }
+    },
+    "useApprovalModeGroupTags": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Allow choice of Group Tags in Approval Mode"
+      }
+    },
+    "approvalModeGroupTags": {
+      "type": "string",
+      "defaultValue": "AutopilotManager,NONE=No Group Tag",
+      "metadata": {
+        "description": "Approval Mode Group Tag list (use entry 'NONE=No Group Tag' to provide empty choice). Use a comma separated string groupTag1,groupTag2,..."
+      }
+    },
+    "useManufacturersFilter": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Enable filter (whitelist) for allowed Manufacturers"
+      }
+    },
+    "useModelsFilter": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Enable filter (whitelist) for allowed Models"
+      }
+    },
+    "manufacturers": {
+      "type": "string",
+      "defaultValue": "Microsoft Corporation",
+      "metadata": {
+        "description": "Manufacturers whitelist, use a comma separated string manufacturer1,manufacturer2,..."
+      }
+    },
+    "models": {
+      "type": "string",
+      "defaultValue": "Virtual Machine",
+      "metadata": {
+        "description": "Models whitelist, use a comma separated string model1,model2,..."
+      }
+    },
+    "hideHomepageImportInstructions": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Hide import instructions (commands) on the AutopilotManager homepage"
+      }
+    },
+    "HomepageImportCommandUrls": {
+      "type": "string",
+      "defaultValue": "ap.domain.com,apserver.domain.com",
+      "metadata": {
+        "description": "Urls for client and server to build command to display on homepage. It may also be just the client url if the server url is compiled into the ap.exe."
+      }
+    }
+  },
+  "variables": {
+    "_repoUrl": "https://raw.githubusercontent.com/okieselbach/Autopilot-Manager",
+    "_artifactsLocation": "[concat(variables('_repoUrl'), '/master/dist/Artifacts.zip')]",
+    "_appServicePlan": "[concat('AutopilotManager-ServicePlan-', uniqueString(resourceGroup().id))]",
+    "_appSerivceName": "[concat('AutopilotManager-', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2020-06-01",
+      "type": "Microsoft.Web/serverfarms",
+      "name": "[variables('_appServicePlan')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "Tier": "Standard",
+        "Name": "S1"
+      },
+      "properties": {
+        "name": "[variables('_appServicePlan')]",
+        "workerSize": 1,
+        "numberOfWorkers": 1
+      }
+    },
+    {
+      "apiVersion": "2020-06-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[variables('_appSerivceName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('_appServicePlan'))]",
+        "httpsOnly": false,
+        "clientAffinityEnabled": false,
+        "siteConfig": {
+          "alwaysOn": true,
+          "use32BitWorkerProcess": false,
+          "ftpsState": "Disabled",
+          "netFrameworkVersion": "v5.0",
+          "metadata": [
+            {
+              "name": "CURRENT_STACK",
+              "value": "dotnet"
             }
-        },
-        {
-            "apiVersion": "2020-06-01",
-            "type": "Microsoft.Web/sites",
-            "name": "[variables('_appSerivceName')]",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('_appServicePlan'))]",
-                "httpsOnly": false,
-                "clientAffinityEnabled": false,
-                "siteConfig": {
-                    "alwaysOn": true,
-                    "use32BitWorkerProcess": false,
-                    "ftpsState": "Disabled",
-                    "netFrameworkVersion": "v5.0",
-                    "metadata": [
-                        {
-                            "name": "CURRENT_STACK",
-                            "value": "dotnet"
-                        }
-                    ],
-                    "appSettings": [
-                        {
-                            "name": "WEBSITE_RUN_FROM_PACKAGE",
-                            "value": "[variables('_artifactsLocation')]"
-                        },
-                        {
-                            "name": "AppConfig:AuthConfig:TenantId",
-                            "value": "[subscription().tenantId]"
-                        },
-                        {
-                            "name": "AppConfig:AuthConfig:ClientId",
-                            "value": "[parameters('appRegistrationClientId')]"
-                        },
-                        {
-                            "name": "AppConfig:AuthConfig:ClientSecret",
-                            "value": "[parameters('appRegistrationClientSecret')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:UseAutopilotProfileGroup",
-                            "value": "true"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:AutopilotProfileGroup",
-                            "value": "[parameters('autopilotProfileGroup')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:AuthorizationSecurityGroup",
-                            "value": "[parameters('authorizationSecurityGroup')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:ViewerSecurityGroup",
-                            "value": "[parameters('viewerSecurityGroup')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:ApproverSecurityGroup",
-                            "value": "[parameters('approverSecurityGroup')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:ApprovalMode",
-                            "value": "[parameters('approvalMode')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:UseApprovalUserAsAssignedUser",
-                            "value": "[parameters('useApprovalUserAsAssignedUser')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:GroupTag",
-                            "value": "[parameters('groupTag')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:UseApprovalModeGroupTags",
-                            "value": "[parameters('useApprovalModeGroupTags')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:ApprovalModeGroupTags",
-                            "value": "[parameters('approvalModeGroupTags')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:UseManufacturersFilter",
-                            "value": "[parameters('useManufacturersFilter')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:UseModelsFilter",
-                            "value": "[parameters('useModelsFilter')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:Manufacturers",
-                            "value": "[parameters('manufacturers')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:Models",
-                            "value": "[parameters('models')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:HideHomepageImportInstructions",
-                            "value": "[parameters('hideHomepageImportInstructions')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:HomepageImportCommandUrls",
-                            "value": "[parameters('HomepageImportCommandUrls')]"
-                        },
-                        {
-                            "name": "AppConfig:AutopilotManagerConfig:Timeout",
-                            "value": "120"
-                        }
-                    ]
-                }
+          ],
+          "appSettings": [
+            {
+              "name": "WEBSITE_RUN_FROM_PACKAGE",
+              "value": "[variables('_artifactsLocation')]"
             },
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('_appServicePlan'))]"
-            ]
+            {
+              "name": "AppConfig:AuthConfig:TenantId",
+              "value": "[subscription().tenantId]"
+            },
+            {
+              "name": "AppConfig:AuthConfig:ClientId",
+              "value": "[parameters('appRegistrationClientId')]"
+            },
+            {
+              "name": "AppConfig:AuthConfig:ClientSecret",
+              "value": "[parameters('appRegistrationClientSecret')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:UseAutopilotProfileGroup",
+              "value": "true"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:AutopilotProfileGroup",
+              "value": "[parameters('autopilotProfileGroup')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:AuthorizationSecurityGroup",
+              "value": "[parameters('authorizationSecurityGroup')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:ViewerSecurityGroup",
+              "value": "[parameters('viewerSecurityGroup')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:ApproverSecurityGroup",
+              "value": "[parameters('approverSecurityGroup')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:ApprovalMode",
+              "value": "[parameters('approvalMode')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:UseApprovalUserAsAssignedUser",
+              "value": "[parameters('useApprovalUserAsAssignedUser')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:GroupTag",
+              "value": "[parameters('groupTag')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:UseApprovalModeGroupTags",
+              "value": "[parameters('useApprovalModeGroupTags')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:ApprovalModeGroupTags",
+              "value": "[parameters('approvalModeGroupTags')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:UseManufacturersFilter",
+              "value": "[parameters('useManufacturersFilter')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:UseModelsFilter",
+              "value": "[parameters('useModelsFilter')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:Manufacturers",
+              "value": "[parameters('manufacturers')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:Models",
+              "value": "[parameters('models')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:HideHomepageImportInstructions",
+              "value": "[parameters('hideHomepageImportInstructions')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:HomepageImportCommandUrls",
+              "value": "[parameters('HomepageImportCommandUrls')]"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:Timeout",
+              "value": "120"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:AllowDeletionInApprovalMode",
+              "value": "false"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:ShowHomepageApprovalLink",
+              "value": "false"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:ShowHomepageHistoryLink",
+              "value": "false"
+            }
+          ]
         }
-    ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('_appServicePlan'))]"
+      ]
+    }
+  ]
 }

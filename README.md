@@ -2,7 +2,10 @@
 
 Autopilot Manager (APM) needs the [Autopilot-Manager-Client](https://github.com/okieselbach/Autopilot-Manager-Client) to receive the Autopilot device provisioning information import request and showing the user a processing screen, similar to the Autopilot Pre-Provisioning scenario (former known as WhiteGlove). The app service queues and handles all the processing to import the device provisioning information into the tenant. It has an approval workflow built in via QR code or Approval helpdesk page. It uses the same logic like the Michael Niehaus Autopilot script [Get-WindowsAutoPilotInfo](https://www.powershellgallery.com/packages/Get-WindowsAutoPilotInfo). The process of the Get-WindowsAutoPilotInfo script is described in a blog post from Michael here: [Importing a device hash directly into Intune](https://oofhours.com/2020/03/25/importing-a-device-hash-directly-into-intune/)
 
-Read more about the solution and detailed installation instructions on my blog post here: **[Introducing Autopilot Manager](https://oliverkieselbach.com/2020/12/08/autopilot-manager/)**
+Read more about the solution and detailed installation instructions on my blog post here:
+
+* **[Introducing Autopilot Manager](https://oliverkieselbach.com/2020/12/08/autopilot-manager/)**
+* **[Evolving Autopilot Manager](https://oliverkieselbach.com/2021/12/21/evolving-autopilot-manager/)**
 
 <img src="https://oliverkieselbach.files.wordpress.com/2020/12/autopilotmanagerandclient-1-e1607072950726.png?w=1100"/>
 

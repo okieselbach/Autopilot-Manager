@@ -27,6 +27,25 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
 </a>
 
 ## Changelog
+v1.5
+- added support for re-register of Autopilot devices. Existing Autopilot devices will be deleted upfront before upload of new Autopilot device information.</br>
+  Tun on ReRegister mode with</br>
+  _AppConfig:AutopilotManagerConfig:UseReRegisterMode_ set to true</br>
+  Additional App registration permissions "_DeviceManagementManagedDevices.ReadWrite.All_" must be granted, same as for delete requests</br>
+  To preservce the purchase order identifier in case of re-register use</br>
+  _AppConfig:AutopilotManagerConfig:PreservePurchaseOrderIdOnReRegister_ set to true</br>
+- added support for writing Audit data to Log Analytics via data collector API</br>
+  use the following configurations to configure this</br>
+  _AppConfig:AutopilotManagerConfig:UseLogAnalytics_ set to true</br>
+  _AppConfig:AutopilotManagerConfig:LogAnalyticsWorkspaceId_ set to "your workspace GUID"</br>
+  _AppConfig:AutopilotManagerConfig:LogAnalyticsSharedKey_ set to "your shared workspace key"</br>
+  _AppConfig:AutopilotManagerConfig:LogAnalyticsReportHardwareHash_ set to true or false</br>
+- added Homepage customization options</br>
+  _AppConfig:AutopilotManagerConfig:HomepageHeadlineSentenceApprovalMode_ to e.g. "Please call the helpdesk (+49 180-12345678) for approval of device import."</br>
+  _AppConfig:AutopilotManagerConfig:HomepageHeadlineSentenceNonApprovalMode_ to e.g. "Please scan the QR code to import the device."</br>
+  _AppConfig:AutopilotManagerConfig:HomepageCompanyLogoImageUrl_ to an image url "https://company.com/image/comapnylogo.png"</br>
+
+
 v1.4
 - added deletion support in Approval Mode for Intune devices due to this latest change: </br>
   https://docs.microsoft.com/en-us/mem/autopilot/troubleshoot-device-enrollment</br>

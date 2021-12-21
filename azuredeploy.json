@@ -254,6 +254,42 @@
             {
               "name": "AppConfig:AutopilotManagerConfig:ShowHomepageHistoryLink",
               "value": "false"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:UseReRegisterMode",
+              "value": "false"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:PreservePurchaseOrderIdOnReRegister",
+              "value": "true"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:UseLogAnalytics",
+              "value": "false"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:LogAnalyticsWorkspaceId",
+              "value": ""
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:LogAnalyticsSharedKey",
+              "value": ""
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:LogAnalyticsReportHardwareHash",
+              "value": "false"
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:HomepageHeadlineSentenceApprovalMode",
+              "value": ""
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:HomepageHeadlineSentenceNonApprovalMode",
+              "value": ""
+            },
+            {
+              "name": "AppConfig:AutopilotManagerConfig:HomepageCompanyLogoImageUrl",
+              "value": ""
             }
           ]
         }

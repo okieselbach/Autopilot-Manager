@@ -151,7 +151,7 @@
           "alwaysOn": true,
           "use32BitWorkerProcess": false,
           "ftpsState": "Disabled",
-          "netFrameworkVersion": "v5.0",
+          "netFrameworkVersion": "v6.0",
           "metadata": [
             {
               "name": "CURRENT_STACK",

@@ -30,6 +30,19 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
 </a>
 
 ## Changelog
+v1.6
+- added support for Azure Functions, which gives extended functionality developed at business side.</br>
+  _AppConfig:AutopilotManagerConfig:AzureFunctionsUrl_ set to your Azure Function URL (e.g. https://apm-functions-xxx.azurewebsites.net/api/)</br>
+  - A validation function (function name: '**validate**') to be called for extended validation of the import request. Validation result will allow or block import</br>
+  _AppConfig:AutopilotManagerConfig:UseValidationFunction_ set to true</br>
+  _AppConfig:AutopilotManagerConfig:ValidationFunctionKey_ set to "your azure function key"</br>
+  - A GroupTag function (function name: '**grouptag**') to receive a GroupTag for the given device</br>
+  _AppConfig:AutopilotManagerConfig:UseGroupTagFunction_ set to true</br>
+  _AppConfig:AutopilotManagerConfig:GroupTagFunctionKey_ set to "your azure function key"</br>
+  - An AutoApproval function (function name: '**autoapproval**') to automatically approve requests after extended validation</br>
+  _AppConfig:AutopilotManagerConfig:UseAutoApprovalFunction_ set to true</br>
+  _AppConfig:AutopilotManagerConfig:AutoApprovalFunctionKey_ set to "your azure function key"</br>
+
 v1.5
 - added support for re-register of Autopilot devices. Existing Autopilot devices will be deleted upfront before upload of new Autopilot device information.</br>
   Tun on ReRegister mode with</br>

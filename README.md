@@ -30,6 +30,10 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
 </a>
 
 ## Changelog
+v1.7
+- fixed a logging bug (user identity was not always correctly logged)
+- added support for transparent headers to support Azure Front Door scenarios
+
 v1.6
 - added support for Azure Functions, which gives extended functionality developed at business side.</br>
   _AppConfig:AutopilotManagerConfig:AzureFunctionsUrl_ set to your Azure Function URL (e.g. https://apm-functions-xxx.azurewebsites.net/api/)</br>

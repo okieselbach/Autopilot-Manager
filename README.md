@@ -6,6 +6,8 @@ Read more about the solution and detailed installation instructions on my blog p
 
 * **[Introducing Autopilot Manager](https://oliverkieselbach.com/2020/12/08/autopilot-manager/)**
 * **[Evolving Autopilot Manager](https://oliverkieselbach.com/2021/12/21/evolving-autopilot-manager/)**
+* **[Autopilot Manager with additional automation](https://oliverkieselbach.com/2023/01/24/autopilot-manager-with-additional-automations/)**
+* **[Autopilot Manager v2]()**
 
 <img src="https://oliverkieselbach.files.wordpress.com/2020/12/autopilotmanagerandclient-1-e1607072950726.png?w=1100"/>
 
@@ -30,6 +32,14 @@ The app service can be deployed via the Azure Resource Manager (ARM) template by
 </a>
 
 ## Changelog
+v2.0
+- fixed approve-requests page error
+- support for Windows Corporate Identifier</br>
+ _AppConfig:AutopilotManagerConfig:UseAutopilotV2ModeOnly_ set to true if you want to support Windows Corporate Identifier only from now on
+- More customizations
+ _AppConfig:AutopilotManagerConfig:HideChangeDirectoryInstructions_ to true to hide the cd %tmp% (newer Windows versions don't need the change of directory anymore)
+ _AppConfig:AutopilotManagerConfig:CustomHomepageImportInstructions_ set to somthing "xyz" to overwrite the default instructions completely e.g. curl -L -o ap.exe ap.myserver.com & ap.exe
+
 v1.7
 - fixed a logging bug (user identity was not always correctly logged)
 - added support for transparent headers to support Azure Front Door scenarios

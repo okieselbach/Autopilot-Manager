@@ -7,7 +7,7 @@ Read more about the solution and detailed installation instructions on my blog p
 * **[Introducing Autopilot Manager](https://oliverkieselbach.com/2020/12/08/autopilot-manager/)**
 * **[Evolving Autopilot Manager](https://oliverkieselbach.com/2021/12/21/evolving-autopilot-manager/)**
 * **[Autopilot Manager with additional automation](https://oliverkieselbach.com/2023/01/24/autopilot-manager-with-additional-automations/)**
-* **[Autopilot Manager v2]()**
+* **[Autopilot Manager v2](https://oliverkieselbach.com/2025/02/17/autopilot-manager-v2/)**
 
 <img src="https://oliverkieselbach.files.wordpress.com/2020/12/autopilotmanagerandclient-1-e1607072950726.png?w=1100"/>
 
